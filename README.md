@@ -36,7 +36,7 @@ REST API приложения представлен ниже
 ### Запрос
 `POST /api/orders`
 
-    curl -i -H 'Content-Type: application/json' -d '{"username" : "Customer1", "status" : "CREATED"}' http://localhost:5556/api/orderss
+    curl -i -H 'Content-Type: application/json' -d '{"username" : "Customer1", "status" : "CREATED"}' http://localhost:5556/api/orders
 ### Ответ
     HTTP/1.1 200
     Content-Type: application/json
@@ -45,7 +45,7 @@ REST API приложения представлен ниже
 ## Обновление заказа
 
 ### Запрос
-`PUT /api/orders`
+`PUT /api/orders/{id}`
 
     curl -i -H 'Content-Type: application/json' -d '{"username" : "Customer1", "status" : "CLOSED"}' -X PUT http://localhost:5556/api/orders/10
 ### Ответ
