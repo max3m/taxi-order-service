@@ -1,0 +1,85 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-initDB.yaml
+  - changeSet:
+      id: 1
+      author: postgres
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(50)
+              - column:
+                  name: driver_username
+                  type: varchar(50)
+              - column:
+                  name: status
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: information
+                  type: varchar(200)
+  - changeSet:
+      id: 2
+      author: postgres
+      comment: "Data init"
+      changes:
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: username
+                  value: "Customer1"
+              - column:
+                  name: driver_username
+                  value: "Driver1"
+              - column:
+                  name: status
+                  value: "CREATED"
+              - column:
+                  name: information
+                  value: "Information1"
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: username
+                  value: "Customer2"
+              - column:
+                  name: driver_username
+                  value: "Driver2"
+              - column:
+                  name: status
+                  value: "CREATED"
+              - column:
+                  name: information
+                  value: "Information2"
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: username
+                  value: "Customer3"
+              - column:
+                  name: driver_username
+                  value: "Driver3"
+              - column:
+                  name: status
+                  value: "CREATED"
+              - column:
+                  name: information
+                  value: "Information3"
+      rollback:
+        - delete:
+            tableName: orders
+            where: username in ('Customer1', 'Customer2', 'Customer3')
+
