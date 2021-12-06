@@ -12,6 +12,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long chainId;
     private String username;
     private String driverUsername;
 
@@ -24,11 +25,12 @@ public class Order {
         this.information = information;
     }
 
-    public Order(Order orderInformation) {
-        this.id = orderInformation.getId();
-        this.username = orderInformation.getUsername();
-        this.driverUsername = orderInformation.getDriverUsername();
-        this.status = orderInformation.getStatus();
-        this.information = orderInformation.getInformation();
+    public Order(Order order) {
+        this.id = order.getId();
+        this.chainId = order.getChainId();
+        this.username = order.getUsername();
+        this.driverUsername = order.getDriverUsername();
+        this.status = order.getStatus();
+        this.information = order.getInformation();
     }
 }

@@ -15,6 +15,9 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: chain_id
+                  type: BIGINT
+              - column:
                   name: username
                   type: varchar(50)
               - column:
@@ -37,6 +40,9 @@ databaseChangeLog:
             tableName: orders
             columns:
               - column:
+                  name: chain_id
+                  value: 1
+              - column:
                   name: username
                   value: "Customer1"
               - column:
@@ -52,6 +58,9 @@ databaseChangeLog:
             tableName: orders
             columns:
               - column:
+                  name: chain_id
+                  value: 2
+              - column:
                   name: username
                   value: "Customer2"
               - column:
@@ -66,6 +75,9 @@ databaseChangeLog:
         - insert:
             tableName: orders
             columns:
+              - column:
+                  name: chain_id
+                  value: 3
               - column:
                   name: username
                   value: "Customer3"

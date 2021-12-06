@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OrderMessage {
     private Long id;
+    private Long chainId;
     private String username;
     private String driverUsername;
     private OrderStatus status;
@@ -17,6 +18,7 @@ public class OrderMessage {
 
     public OrderMessage(Order order) {
         this.id = order.getId();
+        this.chainId = order.getChainId();
         this.username = order.getUsername();
         this.driverUsername = order.getDriverUsername();
         this.status = order.getStatus();

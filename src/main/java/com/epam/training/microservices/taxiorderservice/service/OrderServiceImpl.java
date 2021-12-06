@@ -21,12 +21,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order createOrder(Order orderInformation) {
-        return orderRepository.save(orderInformation);
+    public Order createOrder(Order order) {
+        return orderRepository.save(order);
     }
 
     @Override
-    public Order updateOrder(Long id, Order order) {
+    public Order updateOrder(Long chainId, Order order) {
+        order.setId(chainId);
+        order.setChainId(chainId);
+        System.out.println(order);
         return orderRepository.save(order);
     }
 }

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface OrderService {
     List<Order> getUnassignedOrders();
-    Order createOrder(Order orderInformation);
-    Order updateOrder(Long id, Order orderInformation);
+    Order createOrder(Order order);
+    Order updateOrder(Long chainId, Order order);
 }

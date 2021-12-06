@@ -27,16 +27,15 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     public Order sendOrderCreationRequest(@RequestBody Order order) {
         Order processedOrder = orderService.createOrder(order);
-        producerService.produce(new OrderMessage(processedOrder));
         return processedOrder;
     }
 
-    @PutMapping("/orders/{id}")
+    @PutMapping("/orders/{chainId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Order sendOrderUpdateRequest(@PathVariable("id") Long id, @RequestBody Order order) {
-        Order processedOrder = orderService.createOrder(order);
-        producerService.produce(new OrderMessage(processedOrder));
-        return orderService.updateOrder(id, processedOrder);
+    public Order sendOrderUpdateRequest(@PathVariable("chainId") Long chainId, @RequestBody Order order) {
+        Order verifiedOrder = orderService.updateOrder(chainId, order);
+        producerService.produce(new OrderMessage(verifiedOrder));
+        return verifiedOrder;
     }
 
 
